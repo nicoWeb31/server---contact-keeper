@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-//@route GET api/contact
+//@route GET api/contacts
 //@desc Get all user contacts
 //@access Private
 

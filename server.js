@@ -1,6 +1,13 @@
 const express = require('express');
+const connectdb = require('./config/db');
+const connectDB = require('./config/db')
 
 const app = express();
+
+//connect db
+connectdb();
+
+
 
 app.get('/',(req,res)=>res.json({message: 'welcome to the contact api'}))
 
