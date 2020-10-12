@@ -1,0 +1,3 @@
+
+//test server endpoint ok 
+GET http://localhost:5000 
