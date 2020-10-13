@@ -4,14 +4,19 @@ GET http://localhost:5000
 
 ###
 POST http://localhost:5000/api/users
-
 content-type: application/json
-{}
+
+
+{
+    "name":"nico",
+    "email":"test123@free.fr",
+    "password":"test123"
+}
 
 ###
 POST http://localhost:5000/api/auth
-
 content-type: application/json
+
 {}
 
 ###

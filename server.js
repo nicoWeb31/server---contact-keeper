@@ -8,6 +8,10 @@ const app = express();
 connectdb();
 
 
+//init Middleware
+app.use(express.json({extented : false}))
+
+
 
 app.get('/',(req,res)=>res.json({message: 'welcome to the contact api'}))
 
