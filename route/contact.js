@@ -1,21 +1,63 @@
 const express = require('express');
 const router = express.Router();
+const auth= require('../middleware/auth')
+
+const { validationResult, check } = require('express-validator');
+
+
+const User = require('../model/User');
+const Contact = require('../model/Contact');
+
 
 
 //@route GET api/contacts
 //@desc Get all user contacts
 //@access Private
 
-router.get('/',(req,res)=>{
-    res.send('Get all contact');
+router.get('/',auth,async(req,res)=>{
+    try {
+        const contacts = await Contact.find({user : req.user.id}).sort({date: -1});
+        res.json(contacts)
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send('Server error ! ')
+    }
 })
 
 //@route POST api/contact
 //@desc Add new contacts
 //@access Private
 
-router.post('/',(req,res)=>{
-    res.send('add contact');
+router.post('/',[auth,[
+    check('name','Name is required')
+    .not()
+    .isEmpty()
+]],async(req,res)=>{
+    //si errors
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors: errors.array() })
+    }
+
+    const {name, email,phone, type} = req.body;
+
+    try{
+        const newContact = new Contact({
+            name,
+            email,
+            phone,
+            type,
+            user: req.user.id
+        });
+
+        const contact = await newContact.save();
+
+        res.json(contact);
+
+    }catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Errors');
+    }
 })
 
 
@@ -23,7 +65,7 @@ router.post('/',(req,res)=>{
 //@desc Update contact
 //@access Private
 
-router.put('/:id',(req,res)=>{
+router.put('/:id',auth,(req,res)=>{
     res.send('update contact id');
 })
 
@@ -31,7 +73,7 @@ router.put('/:id',(req,res)=>{
 //@desc delete contact
 //@access Private
 
-router.delete('/:id',(req,res)=>{
+router.delete('/:id',auth,(req,res)=>{
     res.send('delete contact id');
 })
 

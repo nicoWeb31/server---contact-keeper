@@ -37,7 +37,9 @@ GET http://localhost:5000/api/contacts
 POST http://localhost:5000/api/contacts
 
 content-type: application/json
-{}
+{
+    name
+}
 
 ###
 PUT  http://localhost:5000/api/contacts/id

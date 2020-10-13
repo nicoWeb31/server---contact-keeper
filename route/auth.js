@@ -10,7 +10,7 @@ const { validationResult, check } = require('express-validator');
 
 
 const User = require('../model/User');
-const { findById } = require('../model/User');
+
 
 
 //@route GET api/auth
