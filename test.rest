@@ -23,6 +23,14 @@ content-type: application/json
 }
 
 ###
+GET http://localhost:5000/api/auth
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY4NTZkYzc1YTY3MDk0OWIxNDUwYTJiIn0sImlhdCI6MTYwMjU4MzI0NSwiZXhwIjoxNjAyNjE5MjQ1fQ.OT85xA26qtbblah6YJSbhmU5IeZoUqwfY21IwU8gh68
+
+
+
+
+
+###
 GET http://localhost:5000/api/contacts
 
 ###
