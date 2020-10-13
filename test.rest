@@ -9,7 +9,7 @@ content-type: application/json
 
 {
     "name":"nico",
-    "email":"test123@free.fr",
+    "email":"test12fddfgfg3@free.fr",
     "password":"test123"
 }
 
